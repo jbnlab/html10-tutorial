@@ -31,14 +31,14 @@
 */
 
 /* Set the date displayed in the calendar */
-var thisDay = new Date();
+const thisDay = new Date();
 
 /* Write the calendar to the element with the id "calendar" */
 document.getElementById("calendar").innerHTML = createCalendar(thisDay);
 
 /* Function to generate the calendar table */
 function createCalendar(calDate) {
-   var calendarHTML = "<table id='calendar_table'>";
+   let calendarHTML = "<table id='calendar_table'>";
    calendarHTML += calCaption(calDate);
    calendarHTML += calWeekdayRow();
    calendarHTML += calDays(calDate);
@@ -49,14 +49,14 @@ function createCalendar(calDate) {
 /* Function to write the calendar caption */
 function calCaption(calDate) {
    // monthName array contains the list of month names
-   var monthName = ["January","February","March","April",
+   const monthName = ["January","February","March","April",
                     "May","June","July","August","September",
                     "October","November","December"];
    // Determine the current month
-   var thisMonth = calDate.getMonth();
+   const thisMonth = calDate.getMonth();
 
    // Determine the current year
-   var thisYear = calDate.getFullYear();
+   const thisYear = calDate.getFullYear();
 
    // Write the caption
    return "<caption>" + monthName[thisMonth] + " " + thisYear + "</caption>";
@@ -65,8 +65,8 @@ function calCaption(calDate) {
 /* Function to write a table row of weekday abbreviations */
 function calWeekdayRow() {
    // Array of weekday abbreviations
-   var dayName = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
-   var rowHTML = "<tr>";
+   const dayName = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+   let rowHTML = "<tr>";
 
    // Look through the dayName array
    for (var i = 0; i < dayName.length; i++) {
@@ -80,11 +80,11 @@ function calWeekdayRow() {
 /* Function to calculate the number of days in the month */
 function daysInMonth(calDate) {
    // Array of days in each month
-   var dayCount = [31,28,31,30,31,30,31,31,30,31,30,31];
+   const dayCount = [31,28,31,30,31,30,31,31,30,31,30,31];
 
    // Extract the four digit year and month value
-   var thisYear = calDate.getFullYear();
-   var thisMonth = calDate.getMonth();
+   const thisYear = calDate.getFullYear();
+   const thisMonth = calDate.getMonth();
 
    //Revise the days in February for leap years
    if (thisYear % 4 === 0) {
@@ -100,20 +100,20 @@ function daysInMonth(calDate) {
 /* Function to write table rows for each day of the month */
 function calDays(calDate) {
    // Determine the starting day of the month
-   var day = new Date(calDate.getFullYear(), calDate.getMonth(), 1);
-   var weekDay = day.getDay();
+   const day = new Date(calDate.getFullYear(), calDate.getMonth(), 1);
+   let weekDay = day.getDay();
 
    // Write blank cells preceding the starting day
-   var htmlCode = "<tr>";
-   for (var i = 0; i < weekDay; i++) {
+   let htmlCode = "<tr>";
+   for (let i = 0; i < weekDay; i++) {
       htmlCode += "<td></td>";
    }
 
    // Write cells for each day of the month
-   var totalDays = daysInMonth(calDate);
+   const totalDays = daysInMonth(calDate);
 
-   var highlightDay = calDate.getDate();
-   for (var i = 1; i <= totalDays; i++) {
+   const highlightDay = calDate.getDate();
+   for (let i = 1; i <= totalDays; i++) {
       day.setDate(i);
       weekDay = day.getDay();
 
