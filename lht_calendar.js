@@ -69,7 +69,7 @@ function calWeekdayRow() {
    let rowHTML = "<tr>";
 
    // Look through the dayName array
-   for (var i = 0; i < dayName.length; i++) {
+   for (let i = 0; i < dayName.length; i++) {
       rowHTML += "<th class='calendar_weekdays'>" + dayName[i] + "</th>";
    }
 
